@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAML Generator</title>
+    <link rel="icon" href="https://rdf1337.xyz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://rdf1337.xyz/assets/css/cursor.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+            <h1>VLESS to YAML Converter</h1>
+            <!--
+            <button id="theme-toggle-button" class="button secondary-button" onclick="toggleThemeFiles()">
+                <span class="button-icon-group">
+                    <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
+                    <span id="theme-text">Тёмная тема</span>
+                </span>
+            </button>
+            -->
+
+
+        <div class="input-section">
+            <label for="vless-input">VLESS Key (URI):</label>
+            <div class="input-group">
+                <input type="text" id="vless-input" placeholder="vless://uuid@server:port?params#name">
+                <button id="paste-button" class="button action-button" data-target-id="vless-input"
+                    data-original-html='<span class="button-icon-group"><span class="material-symbols-outlined">content_paste</span> Вставить</span>'
+                    onclick="pasteFromClipboard(this)">
+                    <span class="button-icon-group">
+                        <span class="material-symbols-outlined">content_paste</span>
+                        Вставить
+                    </span>
+                </button>
+                <button id="generate-button" class="button primary-button" onclick="handleGenerate()">
+                    <span class="button-icon-group">
+                        <span class="material-symbols-outlined">code</span>
+                        Сгенерировать YAML
+                    </span>
+                </button>
+            </div>
+            <div id="error-output"></div>
+        </div>
+
+        <div class="output-section">
+            <label id="yaml-output-label" for="yaml-output" style="display: none; margin-bottom: 8px;">Результат
+                YAML:</label>
+            <textarea id="yaml-output" readonly></textarea>
+
+            <div class="output-actions">
+                <button id="copy-yaml-button" class="button action-button"
+                    data-original-html='<span class="button-icon-group"><span class="material-symbols-outlined">content_copy</span> Копировать YAML</span>'
+                    onclick="copyToClipboard(document.getElementById('yaml-output').value, this)">
+                    <span class="button-icon-group">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Копировать YAML
+                    </span>
+                </button>
+                <button id="download-yaml-button" class="button primary-button" onclick="downloadYaml()">
+                    <span class="button-icon-group">
+                        <span class="material-symbols-outlined">download</span>
+                        Скачать (.yaml)
+                    </span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
