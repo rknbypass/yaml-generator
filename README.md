@@ -1,4 +1,4 @@
-![Logo](https://i.ibb.co/wZFzxrd2/freeinternet.png)
+![Logo](https://raw.githubusercontent.com/rknbypass/blocked-domains-list/refs/heads/main/freeinternet.png)
 
 ## Что это?
 Страница, которая преобразует VLESS-ключ в полностью готовый YAML-конфиг для использования в прокси-клиентах. Остается лишь прописать свои правила маршрутизации.
