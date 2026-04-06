@@ -206,6 +206,18 @@ proxy-groups:
       
 rules:
   # Пропишите правила здесь
+  
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,17.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+
+  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,win-spy,REJECT
+
   - MATCH,DIRECT
 `;
   return yamlTemplate;
