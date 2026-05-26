@@ -17,7 +17,6 @@ function toggleThemeFiles() {
   }
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   /*
   if (localStorage.getItem("theme") === "dark") {
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   */
 });
-
 
 const errorOutput = document.getElementById("error-output");
 const yamlOutput = document.getElementById("yaml-output");
@@ -104,7 +102,6 @@ function pasteFromClipboard(button) {
     );
   }
 }
-
 
 const fieldsToExtract = [
   { key: "server", label: "server" },
