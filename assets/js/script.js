@@ -182,20 +182,86 @@ function generateYaml(data) {
   const fingerprint = data["client-fingerprint"] || "chrome";
 
   const yamlTemplate = `proxies:
-  - name: "VLESS"
+mixed-port: 7890
+allow-lan: false
+tcp-concurrent: true
+enable-process: true
+find-process-mode: always
+mode: rule
+log-level: info
+ipv6: false
+keep-alive-interval: 30
+unified-delay: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+        - 443
+        - 8443
+  skip-dst-address:
+    - 0.0.0.0/8
+    - 10.0.0.0/8
+    - 127.0.0.0/8
+    - 192.168.0.0/16
+    - fc00::/7
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  strict-route: true
+dns:
+  enable: true
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 77.88.8.8
+    - 94.140.14.14
+  proxy-server-nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://94.140.14.14/dns-query
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+
+proxies:
+  - name: "VLESS" # Имя профиля, можно изменить на свое.
     type: vless
-    server: ${data.server}
-    port: ${data.port}
-    uuid: "${data.uuid}"
+    server:  # Адрес сервера, изменить на свой.
+    port: # Порт, изменить на свой.
+    uuid: "" # User ID, изменить на свой.
     flow: xtls-rprx-vision
     network: tcp
     udp: true
     tls: true
-    servername: "${servername}"
+    servername: "" # SNI, изменить на свой.
     reality-opts:
-      public-key: "${publicKey}"
-      short-id: "${shortId}"
-    client-fingerprint: ${fingerprint}
+      public-key: "" # Public Key, изменить на свой.
+      short-id: "" # ShortID, изменить на свой.
+    client-fingerprint:  # Fingerprint, изменить на свой.
 
 proxy-groups:
   - name: "PROXY"
@@ -203,7 +269,6 @@ proxy-groups:
     proxies:
       - "VLESS"
       - "DIRECT"
-      
 rules:
   # Пропишите правила здесь
   
