@@ -166,7 +166,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-#vless-input {
+#proxy-input {
   flex-grow: 1;
   padding: 14px 16px;
   border: 1px solid var(--md-sys-color-outline);
@@ -177,7 +177,7 @@ h1 {
   background-color: var(--md-sys-color-background);
 }
 
-#vless-input:focus {
+#proxy-input:focus {
   outline: none;
   border-color: var(--md-sys-color-primary);
   box-shadow: 0 0 0 1px var(--md-sys-color-primary);
@@ -294,7 +294,7 @@ h1 {
     flex-shrink: 0;
   }
 
-  #vless-input {
+  #proxy-input {
     margin-bottom: 0px;
   }
 
